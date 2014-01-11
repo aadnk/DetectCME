@@ -1,0 +1,5 @@
+name: DetectCME
+main: com.comphenix.detectcme.DetectCME
+description: Bukkit plugin that can detect the origin of ConcurrentModificationExceptions.
+
+version: 0.2.0
