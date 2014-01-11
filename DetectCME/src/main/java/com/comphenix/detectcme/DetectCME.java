@@ -55,14 +55,6 @@ public class DetectCME extends JavaPlugin implements Listener {
 		
 		// Inject into CraftScoreboardManager
 		serverInjector.inject(getServer(), Thread.currentThread());
-		
-		// For testing purposes
-		getServer().getScheduler().runTaskLaterAsynchronously(this, new Runnable() {
-			@Override
-			public void run() {
-				getServer().getScoreboardManager().getNewScoreboard();
-			}
-		}, 5 * 20);
 	}
 	
 	// Used to verify that the protector works
@@ -80,6 +72,14 @@ public class DetectCME extends JavaPlugin implements Listener {
 				}
 			}
 		}, delaySeconds * TICKS_PER_SECOND);
+		
+		// And test the scoreboard
+		getServer().getScheduler().runTaskLaterAsynchronously(this, new Runnable() {
+			@Override
+			public void run() {
+				getServer().getScoreboardManager().getNewScoreboard();
+			}
+		}, 5 * 20);
 	}
 	
 	@Override
