@@ -40,7 +40,7 @@ public class DetectCME extends JavaPlugin implements Listener {
 	private ServerInjector serverInjector = new ServerInjector();
 	
 	private static final int TICKS_PER_SECOND = 20;
-	
+
 	@Override
 	public void onEnable() { 
 		PluginManager manager = getServer().getPluginManager();
@@ -55,6 +55,14 @@ public class DetectCME extends JavaPlugin implements Listener {
 		
 		// Inject into CraftScoreboardManager
 		serverInjector.inject(getServer(), Thread.currentThread());
+		
+		// Yeah - we definitely don't want people using this over a long period
+		getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+			@Override
+			public void run() {
+				getServer().broadcast(ChatColor.GOLD + "Running DetectCME, for debugging purpuses only!", "detectcme.info");
+			}
+		}, 2 * 3600 * TICKS_PER_SECOND);
 	}
 	
 	// Used to verify that the protector works
